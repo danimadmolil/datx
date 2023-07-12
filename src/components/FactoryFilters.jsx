@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import calculateRequiredFilters from "../utils/factoryFilter";
 var factoryDataRegx = /^(\d+(,\d+)*)?$/;
 export default function FactoryFilters({ factoryPollution }) {
+  if (factoryPollution.endsWith(",")) {
+    factoryPollution = factoryPollution.slice(0, factoryPollution.length - 1);
+  }
   const isPatternOk = factoryDataRegx.test(factoryPollution);
   let errorMessage = "";
   if (isPatternOk) {
@@ -17,10 +20,8 @@ export default function FactoryFilters({ factoryPollution }) {
   let [filter, totalFilter] = calculateRequiredFilters(factoryPollution);
   return (
     <div>
-      <h1>Filters: {errorMessage ? "Error" : filter}</h1>
-      <h1>
-        Pollution Result : {errorMessage ? "Error" : totalFilter || "Error"}
-      </h1>
+      <h1>Filters: {errorMessage ? "Error" : filter || ""}</h1>
+      <h1>Pollution Result : {errorMessage ? "Error" : totalFilter || ""}</h1>
 
       {errorMessage && (
         <div
