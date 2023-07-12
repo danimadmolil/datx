@@ -17,8 +17,10 @@ export default function FactoryFilters({ factoryPollution }) {
   let [filter, totalFilter] = calculateRequiredFilters(factoryPollution);
   return (
     <div>
-      <h1>Filters: {filter}</h1>
-      <h1>Pollution Result : {totalFilter || "Error"}</h1>
+      <h1>Filters: {errorMessage ? "Error" : filter}</h1>
+      <h1>
+        Pollution Result : {errorMessage ? "Error" : totalFilter || "Error"}
+      </h1>
 
       {errorMessage && (
         <div

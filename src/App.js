@@ -19,7 +19,11 @@ function App() {
         justifyContent: "center",
         alignItems: "center",
       }}>
-      <CodePreview style={{ textAlign: "left" }} onlyEdit code={code} />
+      <CodePreview
+        style={{ width: "100%", textAlign: "left" }}
+        onlyEdit
+        code={code}
+      />
       <div
         style={{
           width: "300px",
@@ -49,25 +53,26 @@ function App() {
 export default App;
 const code = `import MinHeap from "./heapq";
 export default function calculateRequiredFilters(input) {
-  let totalFilter = sumArray(input);
-  const targetFilter = totalFilter / 2;
+  let totalPollution = sumArray(input);
+  const targetPollution = totalPollution / 2;
   const heap = new MinHeap();
   input.forEach((item) => {
     heap.add(-item);
   });
   let filters = 0;
-  while (totalFilter > targetFilter) {
+  while (totalPollution > targetPollution) {
     let lowest = heap.poll();
     let nextItem = lowest / 2;
-    totalFilter += nextItem;
+    totalPollution += nextItem;
     heap.add(nextItem);
     filters++;
   }
-  return [filters, totalFilter];
+  return [filters, totalPollution];
 }
 function sumArray(arr) {
   let sum = 0;
   arr.forEach((item) => (sum += item));
   return sum;
 }
+
 `;
