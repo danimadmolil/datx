@@ -5,6 +5,7 @@ export default function FactoryFilters({ factoryPollution }) {
   if (factoryPollution.endsWith(",")) {
     factoryPollution = factoryPollution.slice(0, factoryPollution.length - 1);
   }
+  factoryPollution = factoryPollution.replaceAll(" ", "");
   const isPatternOk = factoryDataRegx.test(factoryPollution);
   let errorMessage = "";
   if (isPatternOk) {
