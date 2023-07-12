@@ -20,7 +20,6 @@ export default function FactoryFilters({ factoryPollution }) {
       <h1>Filters: {filter}</h1>
       <h1>Pollution Result : {totalFilter || "Error"}</h1>
 
-      <div>FactoryFilters</div>
       {errorMessage && (
         <div
           style={{
