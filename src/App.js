@@ -28,7 +28,16 @@ function App() {
         }}>
         <input
           type="text"
-          style={{ backdropFilter: "gray" }}
+          style={{
+            width: "100%",
+            height: "33px",
+            outline: "3px solid black",
+            borderRadius: "8px",
+            boxSizing: "border-box",
+            border: "unset",
+            padding: "6px 10px",
+            background: "#efefef",
+          }}
           onChange={(e) => setFactoryInfo(e.target.value)}
         />
         <FactoryFilters factoryPollution={factoryPollution} />
